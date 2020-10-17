@@ -4,9 +4,11 @@ const port = 3000
 require('dotenv/config')
 const mongoose = require('mongoose');
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+//Import Routes
+const postsRoute = require('./routes/posts')
+
+//Middleware
+app.use('/posts', postsRoute)
 
 //Connect to the database
 mongoose.connect(process.env.DBCONNECTION,
