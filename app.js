@@ -2,12 +2,15 @@ const express = require('express')
 const app = express()
 const port = 3000
 require('dotenv/config')
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 //Import Routes
 const postsRoute = require('./routes/posts')
 
 //Middleware
+app.use(bodyParser.json())
+
 app.use('/posts', postsRoute)
 
 //Connect to the database
@@ -22,5 +25,5 @@ db.once('open', function() {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`App listening at http://localhost:${port}`)
 })
