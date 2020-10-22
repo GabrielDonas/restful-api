@@ -4,11 +4,13 @@ const port = 3000
 require('dotenv/config')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 //Import Routes
 const postsRoute = require('./routes/posts')
 
 //Middleware
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/posts', postsRoute)
